@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사이언스 커넥트 - 대전 특화 과학 교육 콘텐츠</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #fff;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #0056B3;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #A5CC00;
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #0056B3 0%, #003d82 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+        
+        .hero .cta-primary {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: #A5CC00;
+            color: #003d82;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+        
+        .hero .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(165, 204, 0, 0.3);
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section h2 {
+            font-size: 2.2rem;
+            color: #0056B3;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 800;
+        }
+        
+        .emoji-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .problem-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #0056B3;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 86, 179, 0.1);
+        }
+        
+        .problem-card h3 {
+            color: #0056B3;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .problem-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .solution h3 {
+            color: #0056B3;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .solution .value-prop {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 3px solid #A5CC00;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #003d82;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            border-top: 5px solid #A5CC00;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-card h4 {
+            color: #0056B3;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .benefit-tag {
+            display: inline-block;
+            background: #A5CC00;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        /* Trust Section */
+        .trust-content {
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+        
+        .mvp-plan {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .mvp-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #0056B3;
+        }
+        
+        .mvp-item h4 {
+            color: #0056B3;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        /* Pricing Section */
+        .pricing-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            max-width: 900px;
+        }
+        
+        .pricing-header {
+            background: linear-gradient(135deg, #0056B3 0%, #003d82 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .pricing-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-body {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        
+        .pricing-col {
+            padding: 2.5rem;
+            text-align: center;
+            border-right: 1px solid #eee;
+        }
+        
+        .pricing-col:last-child {
+            border-right: none;
+            background: #f0f7ff;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            color: #0056B3;
+            font-weight: 800;
+            margin: 1rem 0;
+        }
+        
+        .price-old {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.2rem;
+        }
+        
+        .discount-badge {
+            display: inline-block;
+            background: #A5CC00;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+        
+        .benefit-list {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        
+        .benefit-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .benefit-list li:before {
+            content: "✓ ";
+            color: #A5CC00;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #A5CC00 0%, #8ab300 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3.5rem;
+            background: white;
+            color: #0056B3;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .urgency {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+            
+            section {
+                padding: 3rem 1.5rem;
+            }
+            
+            section h2 {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            nav a {
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#problem">문제</a></li>
+            <li><a href="#solution">솔루션</a></li>
+            <li><a href="#benefits">혜택</a></li>
+            <li><a href="#trust">신뢰</a></li>
+            <li><a href="#pricing">가격</a></li>
+            <li><a href="#cta">신청</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>대전의 과학 인프라를 당신의 강의실로</h1>
+        <p class="subtitle">
+            KAIST 출신 이공계 전문가들이 직접 기획·제작한<br>
+            학생 몰입도를 300% 높이는 살아있는 지역 과학 교육 자료
+        </p>
+        <a href="#cta" class="cta-primary">🚀 초기 파트너 신청하기</a>
+    </div>
+
+    <section id="problem">
+        <h2 class="emoji-title">🤯</h2>
+        <h2>"우리 학원, '서울 강남 콘텐츠' 말고<br>대전만의 차별화된 무기가 절실합니다."</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; color: #666;">
+            지역 학원 및 교육 사업자님들이 공통적으로 겪는 고민들입니다.
+        </p>
+        
+        <div class="problem-grid fade-in">
+            <div class="problem-card">
+                <h3>Pain Point 1: 획일적인 콘텐츠의 한계</h3>
+                <p>
+                    대부분의 교육 콘텐츠는 전국 단위로 제작되어, 정작 학생들이 매일 접하는 
+                    <strong>'지역 특유의 과학/기술 이슈(연구소, 대학, 산업)'</strong>와는 동떨어져 
+                    몰입도가 낮습니다.
+                </p>
+            </div>
+            
+            <div class="problem-card">
+                <h3>Pain Point 2: 최신 과학 지식의 부재</h3>
+                <p>
+                    KAIST, 정부출연 연구소 등 지역 내 최첨단 과학 인프라의 최신 성과를 
+                    교육 자료에 반영하기 어렵습니다. 업데이트 속도가 느려 
+                    <strong>'살아있는 과학'</strong> 교육이 불가능합니다.
+                </p>
+            </div>
+            
+            <div class="problem-card">
+                <h3>Pain Point 3: 전문성 있는 자료 제작의 어려움</h3>
+                <p>
+                    우수한 교육 경험은 있으시지만, 고품질의 인포그래픽, 실험 영상, 
+                    교사용 강의자료를 제작할 전문 인력과 시간이 부족합니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution">
+        <h2 class="emoji-title">✨</h2>
+        <h2>사이언스 커넥트</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: #666;">
+            지역 교육 격차를 해소하는 맞춤형 과학 콘텐츠 제작 전문팀
+        </p>
+        
+        <div class="solution fade-in">
+            <h3>우리는 누구인가요?</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                저희 팀은 대전의 우수한 이공계 인력 및 교육 실습 경험을 보유한 전문가들로 구성되어 있습니다. 
+                <strong>"사람을 이해시키는 설명력"</strong>을 핵심 강점으로, 지역 자원을 활용한 
+                교육 콘텐츠를 공동 기획 및 제작하여 이 문제를 해결합니다.
+            </p>
+            
+            <div class="value-prop">
+                💡 우리의 가치 제안<br>
+                "지역의 과학 인프라를 교육 현장으로 연결하여, 우리 지역 학생들에게 
+                가장 현실적이고 몰입도 높은 과학 교육 경험을 제공합니다."
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits">
+        <h2 class="emoji-title">🚀</h2>
+        <h2>교육 사업자님이 즉시 얻는 3가지 핵심 경쟁 우위</h2>
+        
+        <div class="benefits-grid fade-in">
+            <div class="benefit-card">
+                <div class="benefit-icon">🎯</div>
+                <span class="benefit-tag">차별화</span>
+                <h4>대전 특화 과학 콘텐츠 라이브러리</h4>
+                <p>
+                    대전 지역 연구소 및 대학의 최신 연구 주제를 녹여낸 교재, 인포그래픽, 
+                    실습 가이드 제공. 지역 내 학부모 설득력을 극대화합니다.
+                </p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">📚</div>
+                <span class="benefit-tag">몰입도</span>
+                <h4>이공계 전문가의 '이해시키는 설명력'</h4>
+                <p>
+                    복잡한 과학 원리도 쉽게 이해할 수 있도록 교육 전문가의 설명 노하우가 
+                    반영된 애니메이션, 영상 콘텐츠 및 교사용 핵심 코멘트를 제공합니다.
+                </p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <span class="benefit-tag">효율</span>
+                <h4>즉시 사용 가능한 고품질 강의 자료</h4>
+                <p>
+                    강의 계획서, 파워포인트/키노트 강의 슬라이드, 숙제/평가 문제까지 
+                    완벽하게 구성된 'All-in-One' 패키지로 자료 준비 시간을 획기적으로 단축합니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="trust">
+        <h2 class="emoji-title">✅</h2>
+        <h2>믿음직한 파트너와 함께하는 검증된 교육 서비스</h2>
+        
+        <div class="trust-content fade-in">
+            <h3 style="color: #0056B3; font-size: 1.6rem; margin-bottom: 2rem;">MVP 계획</h3>
+            
+            <div class="mvp-plan">
+                <div class="mvp-item">
+                    <h4>1차 목표</h4>
+                    <p>
+                        대전 내 5개 학원(베타 테스트 그룹)을 선정하여 '나노 과학' 또는 
+                        '미래 에너지 기술' 특강 콘텐츠를 3개월간 공동 운영 및 효과 검증
+                    </p>
+                </div>
+                
+                <div class="mvp-item">
+                    <h4>2차 목표</h4>
+                    <p>
+                        사용자 피드백을 반영하여 콘텐츠 품질을 고도화하고 정식 서비스 출시
+                    </p>
+                </div>
+            </div>
+            
+            <h3 style="color: #0056B3; font-size: 1.6rem; margin: 3rem 0 2rem;">협력 기관</h3>
+            <ul class="benefit-list">
+                <li>대전 소재 교육 컨설팅 업체 (교육 시장 검증 및 마케팅 자문)</li>
+                <li>지역 내 우수 이공계 대학생 커뮤니티 (최신 과학 정보 및 검토 인력 확보)</li>
+            </ul>
+            
+            <p style="text-align: center; font-size: 1.3rem; font-weight: 600; color: #0056B3; margin-top: 3rem;">
+                "우리의 목표는 단순한 자료 제공이 아닌,<br>지역 교육의 질을 한 단계 높이는 것입니다."
+            </p>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <h2 class="emoji-title">💰</h2>
+        <h2>베타 테스터 한정 초기 파트너 특별 우대 조건</h2>
+        
+        <div class="pricing-table fade-in">
+            <div class="pricing-header">
+                <h3>선착순 5곳 한정 특별 할인</h3>
+                <p>지금 신청하시는 분들께만 드리는 특별한 혜택입니다</p>
+            </div>
+            
+            <div class="pricing-body">
+                <div class="pricing-col">
+                    <h4 style="color: #999; margin-bottom: 1rem;">정식 서비스 (예정)</h4>
+                    <div class="price-old">월 200,000원</div>
+                    <ul class="benefit-list">
+                        <li>핵심 콘텐츠 패키지</li>
+                        <li>자료 업데이트</li>
+                        <li>Q&A 지원</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-col">
+                    <h4 style="color: #0056B3; margin-bottom: 1rem; font-size: 1.3rem;">베타 테스트 (3개월)</h4>
+                    <div class="discount-badge">50% 할인</div>
+                    <div class="price">월 100,000원</div>
+                    <ul class="benefit-list">
+                        <li>핵심 콘텐츠 패키지</li>
+                        <li>자료 업데이트 무료</li>
+                        <li>Q&A 지원 무료</li>
+                        <li><strong>교육 컨설팅 월 1회 무료</strong></li>
+                        <li style="color: #A5CC00; font-weight: 600;">가치: 월 150,000원 상당 추가 혜택</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <p style="text-align: center; color: #666; margin-top: 2rem; font-size: 1.1rem;">
+            <strong>조건:</strong> 베타 테스트 기간(3개월) 동안 서비스에 대한 솔직한 피드백을 제공해 주셔야 합니다.
+        </p>
+    </section>
+
+    <section id="cta">
+        <div class="cta-section fade-in">
+            <h2>💡 지금, 지역 교육 경쟁력의 새로운 기준을 세우세요!</h2>
+            <p>
+                더 이상 전국 공통의 획일적인 자료에 머물지 마세요.<br>
+                <strong>사이언스 커넥트</strong>와 함께 대전의 우수한 인프라를 활용한<br>
+                차별화된 교육 콘텐츠로 잠재 고객을 설득하고 학생들의 성장을 이끌어내십시오.
+            </p>
+            <a href="mailto:contact@scienceconnect.kr?subject=초기 파트너 신청&body=학원명:%0D%0A연락처:%0D%0A문의사항:" class="cta-button">
+                🚀 초기 파트너 신청 및 문의하기
+            </a>
+            <p class="urgency">선착순 5개 파트너에게만 제공되는 특별 혜택을 놓치지 마세요!</p>
+            <p style="margin-top: 1rem; font-size: 0.95rem;">문의 시 24시간 내 전문 컨설턴트가 연락드립니다.</p>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
